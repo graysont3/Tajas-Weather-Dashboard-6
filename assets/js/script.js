@@ -1,28 +1,19 @@
-var searchBar = document.querySelector("city-input");
+function Search () {
 
-var activeSearch = $(searchBar).val();
+    var city = $('#city-input')[0].value.trim();
 
-var apiKey = "c3e58f33e5518e314aebe144f75e0982";
-
-function currentWeather(activeSearch){
-    var requestCurrentWeather = `api.openweathermap.org/data/2.5/forecast?q=${activeSearch}&appid=${apiKey}`;
-    fetch(requestCurrentWeather)
-    .then(function(response) {
-        return response.json();
+    var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=c3e58f33e5518e314aebe144f75e0982&units=imperial';
+    fetch(requestUrl)
+    .then(function (response) {
+    if (response.ok) {
+        response.json().then(function (data) {
+        $("#current-city")[0].textContent = city + " (" + dayjs().format('M/D/YYYY') + ")"
+       
+            })
+        }
     })
-    .then(function(data){
-        document.getElementById('current-temp').textContent = `Temp: ${data.main.temperature}`
-        document.getElementById('current-humidity').textContent = `Humidity: ${data.main.humidity}`
-        document.getElementById('current-wind').textContent = `Wind: ${data.wind.speed}`
-        console.log(data);
-    })  
 }
-
-var searchButton = document.getElementById("search-button");
-searchButton.addEventListener("click", function(e){
-    e.preventDefault()
-    var searchBar = $("#city-input")
-    console.log(searchBar)
-    var activeSearch = searchBar[0];
-    currentWeather(activeSearch);
+   $("#search-button").click(function(event){
+    event.preventDefault();
+    Search();
 })
