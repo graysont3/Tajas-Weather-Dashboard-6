@@ -10,9 +10,9 @@ N/A
 
 ## Usage
 
-Please navigate to the application to view the weather:
+Please navigate to the application to view the weather: https://graysont3.github.io/Tajas-Weather-Dashboard-6/ 
 
-This is what it should look like:
+This is what it should look like: ![User navigates to page.](./assets/Screenshot%202023-07-22%20at%201.46.28%20PM.png) 
 
 ## Credits
 
